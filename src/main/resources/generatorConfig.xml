@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+    <context id="myBlog" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <!-- 取消引号 -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+
+        <!-- plugin -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 分页插件-->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+
+        <!-- 取消生成的代码注释 -->
+        <commentGenerator>
+            <!--如果屏蔽注释XML会重复生成内容部分-->
+            <property name="suppressAllComments" value="false"/>
+            <!--屏蔽生成时间戳，避免每次生成的文件都不一样-->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- 连接配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://59.110.226.218:3306/blog?useUnicode=true&amp;characterEncoding=utf8"
+                        userId="blog_admin"
+                        password="blog_admin">
+        </jdbcConnection>
+
+        <!-- bean  -->
+        <javaModelGenerator targetPackage="site.zkd.unnote.model.mybatis.bean" targetProject="src/main/java">
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- xml -->
+        <sqlMapGenerator targetPackage="mappers/mybatis" targetProject="src/main/resources">
+        </sqlMapGenerator>
+        <!-- 接口 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="site.zkd.unnote.model.mybatis.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="t_blog_article" domainObjectName="ArticleBean">
+        </table>
+        <table tableName="t_blog_category" domainObjectName="CategoryBean">
+        </table>
+        <table tableName="t_blog_label" domainObjectName="LabelBean">
+        </table>
+        <table tableName="t_blog_sys_options" domainObjectName="OptionsBean">
+        </table>
+        <table tableName="t_blog_sys_user" domainObjectName="UserBean">
+        </table>
+
+
+    </context>
+
+</generatorConfiguration>

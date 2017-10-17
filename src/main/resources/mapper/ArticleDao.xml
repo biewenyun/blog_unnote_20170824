@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.zkd.unnote.dao.ArticleDao">
+
+
+    <insert id="add" parameterType="site.zkd.unnote.domain.PostCustom">
+        <selectKey keyProperty="postCustom.article_id" order="AFTER" resultType="java.lang.String">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+        <!--<choose>-->
+        <!--<when test="postCustom.id == null">-->
+        #文章id为空说明是刚开始插入新的文章
+        INSERT INTO `t_blog_article` (
+        `article_id`,
+        `article_author`,
+        `article_title`,
+        `article_content`,
+        `article_abstract`,
+        `article_label_name`,
+        `article_istop`,
+        `article_create_time`,
+        `article_lastmodified_time`,
+        `article_isvisible`,
+        `article_status`,
+        `article_content_html`,
+        `user_id`,
+        `label_id`,
+        `category_id`,
+        `modified_id`,
+        `comment_id`,
+        `guid`,
+        `ping_status`,
+        `post_type`,
+        `post_mime_type`)
+        VALUES
+        (#{postCustom.article_id},
+        #{postCustom.article_author},
+        #{postCustom.article_title},
+        #{postCustom.article_content},
+        #{postCustom.article_abstract},
+        #{postCustom.article_label_name},
+        #{postCustom.article_istop},
+        #{postCustom.article_create_time},
+        #{postCustom.article_lastmodified_time},
+        #{postCustom.article_isvisible},
+        #{postCustom.article_status},
+        #{postCustom.article_content_html},
+        #{postCustom.user_id},
+        #{postCustom.label_id},
+        #{postCustom.category_id},
+        #{postCustom.modified_id},
+        #{postCustom.comment_id},
+        #{postCustom.guid},
+        #{postCustom.ping_status},
+        #{postCustom.post_type},
+        #{postCustom.post_mime_type})
+    </insert>
+
+    <resultMap type="site.zkd.unnote.domain.PostCustom" id="findAllPublish">
+        <result property="article_id" column="article_id"/>
+        <result property="article_title" column="article_title"/>
+        <result property="article_create_time" column="article_create_time"/>
+        <result property="article_lastmodified_time" column="article_lastmodified_time"/>
+    </resultMap>
+    <select id="findAllPublish" resultMap="findAllPublish">
+        SELECT `article_id`,`article_title`,`article_create_time`,`article_lastmodified_time`
+        FROM `t_blog_article`
+        WHERE `post_type`='post'
+        AND `article_status`='publish'
+        ORDER BY `article_id`
+        DESC LIMIT #{offset}, #{limit}</select>
+
+
+    <!--<select id="findAllNew" resultType="site.zkd.unnote.domain.ArticleBean">-->
+    <!--SELECT article_id ,article_title-->
+    <!--FROM `t_blog_article`-->
+    <!--WHERE `post_type`='post'-->
+    <!--AND `article_status`='publish'-->
+    <!--ORDER BY `article_id`-->
+    <!--DESC LIMIT 1, 10</select>-->
+
+    <resultMap type="site.zkd.unnote.domain.PostCustom" id="findAllNew">
+        <result property="article_id" column="article_id"/>
+        <result property="article_title" column="article_title"/>
+    </resultMap>
+    <select id="findAllNew" resultMap="findAllNew">
+        SELECT article_id ,article_title
+        FROM `t_blog_article`
+        WHERE `post_type`='post'
+        AND `article_status`='publish'
+        ORDER BY `article_id`
+        DESC LIMIT 1, 10</select>
+
+
+    <select id="getAllCount" resultType="int">
+        SELECT COUNT(*) FROM `t_blog_article`;
+    </select>
+
+    <!--<select id="getAllPostDateCount" resultType="site.zkd.unnote.domain.ArticleBean">-->
+    <!--SELECT `article_create_time`,`article_id`-->
+    <!--FROM `t_blog_article`-->
+    <!--WHERE `post_type`='post'-->
+    <!--AND `article_status`='publish'-->
+    <!--ORDER BY `article_create_time`-->
+    <!--DESC </select>-->
+
+
+    <resultMap type="site.zkd.unnote.domain.PostCustom" id="getAllPostDateCount">
+        <result property="article_create_time" column="article_create_time"/>
+        <result property="article_id" column="article_id"/>
+    </resultMap>
+    <select id="getAllPostDateCount" resultMap="getAllPostDateCount">
+        SELECT `article_create_time`,`article_id`
+        FROM `t_blog_article`
+        WHERE `post_type`='post'
+        AND `article_status`='publish'
+        ORDER BY `article_create_time`
+        DESC </select>
+
+
+    <resultMap type="site.zkd.unnote.domain.PostCustom" id="findOneById">
+        <result property="article_id" column="article_id"/>
+        <result property="article_title" column="article_title"/>
+        <result property="article_create_time" column="article_create_time"/>
+        <result property="article_content" column="article_content"/>
+    </resultMap>
+    <select id="findOneById" resultMap="findOneById">
+        SELECT
+          `article_id`,`article_title`,`article_create_time`,`article_content`
+        FROM
+          `t_blog_article`
+        WHERE
+        `article_id`=#{postId}
+        AND
+        `article_status`='publish'
+    </select>
+</mapper>
