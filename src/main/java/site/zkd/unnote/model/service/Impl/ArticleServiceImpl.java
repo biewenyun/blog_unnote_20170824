@@ -48,6 +48,45 @@ public class ArticleServiceImpl implements IArticleService {
         }
     }
 
+    @Override
+    public List<ArticleBean> selectPaging(Long userId, String status, String searchBy, String searchByValue, String orderBy, int offset, int limit) {
+
+        if(status.equalsIgnoreCase(GlobalConstants.ARTICLE.Status.DRAFT)||
+                status.equalsIgnoreCase(GlobalConstants.ARTICLE.Status.PUBLISH)||
+                status.equalsIgnoreCase(GlobalConstants.ARTICLE.Status.RECYCLED)){
+
+            //条件
+            ArticleBeanExample example =new ArticleBeanExample();
+            switch (searchBy){
+                case GlobalConstants.ARTICLE.SearchBy.LABEL:
+                    example.or().andUserIdEqualTo(userId).andArticleStatusEqualTo(status).andLabelIdAllLike("%"+searchByValue+"%");
+                    break;
+                case GlobalConstants.ARTICLE.SearchBy.CATEGORY:
+                    example.or().andUserIdEqualTo(userId).andArticleStatusEqualTo(status).andCategoryIdEqualTo(Long.valueOf(searchByValue));
+                    break;
+                case GlobalConstants.ARTICLE.SearchBy.TITLE:
+                    example.or().andUserIdEqualTo(userId).andArticleStatusEqualTo(status).andArticleTitleLike("%"+searchByValue+"%");
+                    break;
+                case GlobalConstants.ARTICLE.SearchBy.ABSTRACT:
+                    example.or().andUserIdEqualTo(userId).andArticleStatusEqualTo(status).andArticleAbstractLike("%"+searchByValue+"%");
+                    break;
+                case GlobalConstants.ARTICLE.SearchBy.ALL:
+                    //TODO
+                    break;
+
+            }
+            //排序
+            example.setOrderByClause(orderBy+"DESC");
+            //分页
+            RowBounds rowBounds =new RowBounds(offset,limit);
+
+            return articleBeanMapper.selectByExampleWithBLOBsWithRowbounds(example,rowBounds);
+
+        }else {
+            return new ArrayList<ArticleBean>();
+        }
+    }
+
     public int insertArticle(ArticleBean articleBean) {
         return articleBeanMapper.insertSelective(articleBean);
     }

@@ -24,7 +24,7 @@ public interface IArticleService {
     List<ArticleBean> selectByStatus(Long userId, String status);
 
     /**
-     * 分页查询 默认createtime降序排列
+     * 分页查询 默认createtime降序排列 首页初始时使用
      * @param userId
      * @param status
      * @param offset 开始
@@ -32,6 +32,18 @@ public interface IArticleService {
      * @return statues有误返回一个size为0的集合
      */
     List<ArticleBean> selectPagingByStatus(Long userId, String status,@Param("offset") int offset, @Param("limit") int limit);
+
+    /**
+     * 分页查询
+     * @param userId 用户id
+     * @param status 查找文章状态
+     * @param searchBy 查找什么，详见GlobalConstants
+     * @param orderBy 根据什么排序
+     * @param offset 开始
+     * @param limit 结束
+     * @return 文章list
+     */
+    List<ArticleBean> selectPaging(Long userId, String status,String searchBy,String searchByValue,String orderBy,@Param("offset") int offset, @Param("limit") int limit);
 
     /**
      * 添加新的文章

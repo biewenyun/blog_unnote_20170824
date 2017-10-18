@@ -474,9 +474,9 @@
                         <i>Sort:</i>&nbsp;发布时间<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" style="font-size: 12px;min-width: 0px;">
-                        <li><a href="#">&nbsp;&nbsp;&nbsp;发布时间&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="javascript:void(0)" onclick="orderBy(this);return false;" data-orderby="article_create_time">&nbsp;&nbsp;&nbsp;发布时间&nbsp;&nbsp;&nbsp;</a></li>
                         <li role="separator" class="divider" style="margin: 1px 0px;"></li>
-                        <li><a href="#">&nbsp;&nbsp;&nbsp;修改时间&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="javascript:void(0)" onclick="orderBy(this);return false;" data-orderby="article_lastmodified_time">&nbsp;&nbsp;&nbsp;修改时间&nbsp;&nbsp;&nbsp;</a></li>
                     </ul>
                 </div>
             </div>
@@ -632,12 +632,16 @@
     var categorysJsonobj = JSON.parse(categorysJsonStr);
     var labelsJsonobj = JSON.parse(labelsJsonStr);
 
+    //TODO
+    var userId =Number(0);
+    var currentPage = Number(1);
+    var pageNum = Number(7);
+
     loadArticle();
     loadPaging();
 
     loadCategory();
     loadLabel();
-
     loadGotoTop();
 
     //left 加载文章列表
@@ -651,8 +655,6 @@
 
     //left 加载页码
     function loadPaging() {
-        var currentPage = Number(2);
-        var pageNum = Number(7);
         $("#page_btn2").text(currentPage - 2);
         $("#page_btn3").text(currentPage - 1);
         $("#page_btn4").text(currentPage);
@@ -778,6 +780,53 @@
             });
 
     };
+
+    //搜索文章列表
+    function searchBy(e){
+        var searchBy = $(e).attr("searchBy");
+        console.log(searchBy);//undfinded
+        console.log($(e).text());
+        console.log($(e).attr("data-orderby"));
+        $.ajax({
+            type: "POST",
+            url: '<c:url value="/search"/>',
+            data: {searchBy:searchBy,userId:userId,pageNum: Number(1), pageSize: Number(10)},
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                if (data.code == 1) {
+//                    updateList(data.data);
+//                    pageNum = data.pageNum;
+//                    $("#log-controller-now").html(pageNum);
+                    console.log(data);
+                }
+            }
+        });
+    }
+
+    //文章排序
+    function orderBy(e) {
+        var searchBy = $(e).attr("searchBy");
+        var searchByValue =$(e).attr("searchByValue");;
+        var orderBy = $(e).attr("data-orderby");
+
+        $.ajax({
+            type: "POST",
+            url: '<c:url value="/search"/>',
+            data: {userId:userId,status:"publish",searchBy:searchBy, searchByValue:searchByValue,
+                orderBy:orderBy,pageNum: currentPage, pageSize: Number(10)},
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                if (data.code == 1) {
+//                    updateList(data.data);
+//                    pageNum = data.pageNum;
+//                    $("#log-controller-now").html(pageNum);
+                    console.log(data);
+                }
+            }
+        });
+    }
 
 </script>
 </body>

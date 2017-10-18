@@ -25,7 +25,11 @@ public class GlobalConstants {
          * 根据什么查找文章
          */
         public static class SearchBy{
-            public static final String LABEL ="";
+            public static final String ALL ="all";
+            public static final String LABEL ="label";
+            public static final String CATEGORY ="category";
+            public static final String ABSTRACT ="abstract";
+            public static final String TITLE ="title";
         }
     }
 

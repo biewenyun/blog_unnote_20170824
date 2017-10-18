@@ -385,6 +385,76 @@ public class ArticleBeanExample {
             return (Criteria) this;
         }
 
+        public Criteria andArticleTitleIsNull() {
+            addCriterion("article_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleIsNotNull() {
+            addCriterion("article_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleEqualTo(String value) {
+            addCriterion("article_title =", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleNotEqualTo(String value) {
+            addCriterion("article_title <>", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleGreaterThan(String value) {
+            addCriterion("article_title >", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("article_title >=", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleLessThan(String value) {
+            addCriterion("article_title <", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleLessThanOrEqualTo(String value) {
+            addCriterion("article_title <=", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleLike(String value) {
+            addCriterion("article_title like", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleNotLike(String value) {
+            addCriterion("article_title not like", value, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleIn(List<String> values) {
+            addCriterion("article_title in", values, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleNotIn(List<String> values) {
+            addCriterion("article_title not in", values, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleBetween(String value1, String value2) {
+            addCriterion("article_title between", value1, value2, "articleTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleTitleNotBetween(String value1, String value2) {
+            addCriterion("article_title not between", value1, value2, "articleTitle");
+            return (Criteria) this;
+        }
+
         public Criteria andArticleCreateTimeIsNull() {
             addCriterion("article_create_time is null");
             return (Criteria) this;
@@ -505,6 +575,146 @@ public class ArticleBeanExample {
             return (Criteria) this;
         }
 
+        public Criteria andLabelIdAllIsNull() {
+            addCriterion("label_id_all is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllIsNotNull() {
+            addCriterion("label_id_all is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllEqualTo(String value) {
+            addCriterion("label_id_all =", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllNotEqualTo(String value) {
+            addCriterion("label_id_all <>", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllGreaterThan(String value) {
+            addCriterion("label_id_all >", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllGreaterThanOrEqualTo(String value) {
+            addCriterion("label_id_all >=", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllLessThan(String value) {
+            addCriterion("label_id_all <", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllLessThanOrEqualTo(String value) {
+            addCriterion("label_id_all <=", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllLike(String value) {
+            addCriterion("label_id_all like", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllNotLike(String value) {
+            addCriterion("label_id_all not like", value, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllIn(List<String> values) {
+            addCriterion("label_id_all in", values, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllNotIn(List<String> values) {
+            addCriterion("label_id_all not in", values, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllBetween(String value1, String value2) {
+            addCriterion("label_id_all between", value1, value2, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelIdAllNotBetween(String value1, String value2) {
+            addCriterion("label_id_all not between", value1, value2, "labelIdAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllIsNull() {
+            addCriterion("label_name_all is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllIsNotNull() {
+            addCriterion("label_name_all is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllEqualTo(String value) {
+            addCriterion("label_name_all =", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllNotEqualTo(String value) {
+            addCriterion("label_name_all <>", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllGreaterThan(String value) {
+            addCriterion("label_name_all >", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllGreaterThanOrEqualTo(String value) {
+            addCriterion("label_name_all >=", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllLessThan(String value) {
+            addCriterion("label_name_all <", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllLessThanOrEqualTo(String value) {
+            addCriterion("label_name_all <=", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllLike(String value) {
+            addCriterion("label_name_all like", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllNotLike(String value) {
+            addCriterion("label_name_all not like", value, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllIn(List<String> values) {
+            addCriterion("label_name_all in", values, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllNotIn(List<String> values) {
+            addCriterion("label_name_all not in", values, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllBetween(String value1, String value2) {
+            addCriterion("label_name_all between", value1, value2, "labelNameAll");
+            return (Criteria) this;
+        }
+
+        public Criteria andLabelNameAllNotBetween(String value1, String value2) {
+            addCriterion("label_name_all not between", value1, value2, "labelNameAll");
+            return (Criteria) this;
+        }
+
         public Criteria andArticleStatusIsNull() {
             addCriterion("article_status is null");
             return (Criteria) this;
@@ -572,6 +782,76 @@ public class ArticleBeanExample {
 
         public Criteria andArticleStatusNotBetween(String value1, String value2) {
             addCriterion("article_status not between", value1, value2, "articleStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractIsNull() {
+            addCriterion("article_abstract is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractIsNotNull() {
+            addCriterion("article_abstract is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractEqualTo(String value) {
+            addCriterion("article_abstract =", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractNotEqualTo(String value) {
+            addCriterion("article_abstract <>", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractGreaterThan(String value) {
+            addCriterion("article_abstract >", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractGreaterThanOrEqualTo(String value) {
+            addCriterion("article_abstract >=", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractLessThan(String value) {
+            addCriterion("article_abstract <", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractLessThanOrEqualTo(String value) {
+            addCriterion("article_abstract <=", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractLike(String value) {
+            addCriterion("article_abstract like", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractNotLike(String value) {
+            addCriterion("article_abstract not like", value, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractIn(List<String> values) {
+            addCriterion("article_abstract in", values, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractNotIn(List<String> values) {
+            addCriterion("article_abstract not in", values, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractBetween(String value1, String value2) {
+            addCriterion("article_abstract between", value1, value2, "articleAbstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andArticleAbstractNotBetween(String value1, String value2) {
+            addCriterion("article_abstract not between", value1, value2, "articleAbstract");
             return (Criteria) this;
         }
 
